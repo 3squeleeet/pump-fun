@@ -1,0 +1,4 @@
+9 cryptocurrency icons from https://github.com/spothq/cryptocurrency-icons
+Bitcoin, Ethereum, Solana, Dogecoin, Avalanche, Chainlink, Uniswap, Aave, Litecoin.
+License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
+Other assets use generated initials. Names and symbols identify their respective projects.

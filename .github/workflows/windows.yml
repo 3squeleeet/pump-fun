@@ -1,0 +1,29 @@
+name: Gerar aplicativo Windows
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run build:win
+      - name: Incluir instruções
+        shell: pwsh
+        run: Copy-Item README.md dist/PumpLab-win32-x64/LEIA-ME.md
+      - name: Disponibilizar pacote Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: PumpLab-Windows-x64
+          path: dist/PumpLab-win32-x64/
+          if-no-files-found: error
+          retention-days: 14
